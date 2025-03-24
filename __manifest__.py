@@ -1,0 +1,36 @@
+{
+    "name": "Electronic Tax Document Invoicing",
+    "version": "17.3",
+    "category": "Accounting & Finance",
+    "summary": "Manage electronic tax document invoicing",
+    "description": "Manage electronic tax document invoicing",
+    "author": "Jorge Alvarez <alvarez.jeap@gmail.com>",
+    "website": "https://github.com/jealvarez",
+    "depends": ["base", "account", "contact_extensions"],
+    "license": "LGPL-3",
+    "data": [
+        "data/electronic_tax_document_invoice_type.xml",
+        "data/electronic_tax_document_partner.xml",
+        "data/electronic_tax_document_sat_phrase_type_and_subtype.xml",
+        "data/electronic_tax_document_mail_template_data.xml",
+        "data/electronic_tax_document_invoice_paper_format.xml",
+        "data/electronic_tax_document_actions.xml",
+        "reports/account_report_payment_receipt_inherit_templates.xml",
+        "security/electronic_tax_document_invoicing_access_rules.xml",
+        "security/ir.model.access.csv",
+        "views/account_invoice_inherit_view.xml",
+        "views/account_tax_inherit_view.xml",
+        "views/product_inherit_view.xml",
+        "views/electronic_tax_document_menu.xml",
+        "views/electronic_tax_document_configuration_view.xml",
+        "views/res_company_form_inherit_view.xml",
+        "views/account_invoice_list_inherit_view.xml",
+        "views/account_move_cancellation_form_view.xml",
+    ],
+    "assets": {
+        "web.report_assets_common": [
+            "electronic_tax_document_invoicing/static/src/css/account_report_payment_receipt_inherit_templates.css"
+        ],
+    },
+    "application": True,
+}
