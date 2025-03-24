@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="True">
+
+  <data>
+
+    <record id="action_electronic_tax_document_configuration" model="ir.actions.act_window">
+      <field name="name">Settings</field>
+      <field name="type">ir.actions.act_window</field>
+      <field name="res_model">electronic_tax_document.configuration</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+
+  </data>
+
+</odoo>

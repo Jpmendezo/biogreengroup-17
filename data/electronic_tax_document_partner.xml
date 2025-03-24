@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="True">
+
+  <data>
+
+    <record id="infile" model="electronic_tax_document.partner">
+      <field name="name">Infile, S.A.</field>
+      <field name="active" eval="True" />
+      <field name="nit">12521337</field>
+    </record>
+
+  </data>
+
+</odoo>

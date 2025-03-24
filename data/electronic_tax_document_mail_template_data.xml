@@ -1,0 +1,139 @@
+<?xml version="1.0" ?>
+<odoo>
+
+    <!-- Mail template are declared in a NOUPDATE block
+         so users can freely customize/delete them -->
+    <data noupdate="1">
+        <!--Email template -->
+        <record id="electronic_tax_document_email_template_invoice" model="mail.template">
+            <field name="name">Plantilla Factura Electrónica: Envío</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="email_from">{{ (object.invoice_user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">{{ object.company_id.name }} - Factura {{ object.name or 'n/a' }}</field>
+            <field name="description">Envía a los clientes con sus facturas adjuntas</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+        Estimado/a
+        <t t-if="object.partner_id.parent_id">
+            <t t-out="object.partner_id.name or ''">Brandon Freeman</t> (<t t-out="object.partner_id.parent_id.name or ''">Azure Interior</t>),
+        </t>
+        <t t-else="">
+            <t t-out="object.partner_id.name or ''">Brandon Freeman</t>,
+        </t>
+        <br /><br />
+        Remitimos adjunta su 
+        <t t-if="object.name">
+            factura <span style="font-weight:bold;" t-out="object.name or ''">INV/2021/05/0005</span>
+        </t>
+        <t t-else="">
+            factura
+        </t>
+        <t t-if="object.invoice_origin">
+            (con referencia: <t t-out="object.invoice_origin or ''">SUB003</t>)
+        </t>
+        por un importe de <span style="font-weight:bold;" t-out="format_amount(object.amount_total, object.currency_id) or ''">$ 143,750.00</span>
+        efectuado por <t t-out="object.company_id.name or ''">YourCompany</t>.
+        <t t-if="object.payment_state in ('paid', 'in_payment')">
+            Esta factura ya se encuentra pagada.
+        </t>
+        <t t-else="">
+            Por favor remita el pago lo antes posible.
+            <t t-if="object.payment_reference">
+                <br /><br />
+                Por favor, utilice la siguiente referencia para su pago: <span style="font-weight:bold;" t-out="object.payment_reference or ''">INV/2021/05/0005</span>.
+            </t>
+        </t>
+        <t t-if="hasattr(object, 'timesheet_count') and object.timesheet_count">
+            <br /><br />
+            PD: puedes revisar tus hojas de horas <a t-att-href="'my/timesheets?search_in=invoice&amp;search=%s' % object.name">from the portal.</a>
+        </t>
+        <br /><br />
+        No dude en ponerse en contacto con nosotros si tiene alguna pregunta.
+        <t t-if="not is_html_empty(object.invoice_user_id.signature)">
+            <br /><br />
+            <t t-out="object.invoice_user_id.signature or ''">--<br/>Mitchell Admin</t>
+        </t>
+    </p>
+</div>
+            </field>
+            <field name="report_template_ids" eval="[(4, ref('account.account_invoices'))]"/>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+
+        <record id="electronic_tax_document_mail_template_data_payment_receipt" model="mail.template">
+            <field name="name">Plantilla Factura Electrónica Pago: Recibo de pago</field>
+            <field name="model_id" ref="account.model_account_payment"/>
+            <field name="subject">{{ object.company_id.name }} Recibo de Pago (Ref {{ 'DTE_' + object.electronic_tax_document_certification_serie + '_' + object.electronic_tax_document_certification_number object.name or 'n/a' }})</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="description">Envía manualmente al cliente al hacer clic en "Enviar recibo por correo electrónico" en la acción de pago.</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+        Estimado/a <t t-out="object.partner_id.name or ''">Azure Interior</t><br/><br/>
+        Gracias por su pago.
+        Aquí tiene su recibo de pago <span style="font-weight:bold;" t-out="(object.name or '').replace('/','-') or ''">BNK1-2021-05-0002</span> que asciende
+        a <span style="font-weight:bold;" t-out="format_amount(object.amount, object.currency_id) or ''">$ 10.00</span> efectuado por <t t-out="object.company_id.name or ''">YourCompany</t>.
+        <br/><br/>
+        No dude en ponerse en contacto con nosotros si tiene alguna pregunta.
+        <br/><br/>
+        Saludos cordiales,
+        <t t-if="not is_html_empty(user.signature)">
+            <br/><br/>
+            <t t-out="user.signature or ''">--<br/>Mitchell Admin</t>
+        </t>
+    </p>
+</div>
+</field>
+            <field name="report_template_ids" eval="[(4, ref('account.action_report_payment_receipt'))]"/>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+        <!-- Credit note template -->
+        <record id="email_template_edi_credit_note" model="mail.template">
+            <field name="name">Plantilla Factura Electrónica Nota de Abono: Envío</field>
+            <field name="model_id" ref="account.model_account_move"/>
+            <field name="email_from">{{ (object.invoice_user_id.email_formatted or object.company_id.email_formatted or user.email_formatted) }}</field>
+            <field name="partner_to">{{ object.partner_id.id }}</field>
+            <field name="subject">{{ object.company_id.name }} Nota de Crédito (Ref {{ 'DTE_' + object.electronic_tax_document_certification_serie + '_' + object.electronic_tax_document_certification_number object.name or 'n/a' }})</field>
+            <field name="description">Envía a los clientes con la nota de crédito adjunta</field>
+            <field name="body_html" type="html">
+<div style="margin: 0px; padding: 0px;">
+    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+        Estimado/a
+        <t t-if="object.partner_id.parent_id">
+            <t t-out="object.partner_id.name or ''">Brandon Freeman</t> (<t t-out="object.partner_id.parent_id.name or ''">Azure Interior</t>),
+        </t>
+        <t t-else="">
+            <t t-out="object.partner_id.name or ''">Brandon Freeman</t>,
+        </t>
+        <br /><br />
+        Aquí tiene su
+        <t t-if="object.name">
+            nota de crédito <span style="font-weight:bold;" t-out="object.name or ''">RINV/2021/05/0001</span>
+        </t>
+        <t t-else="">
+            nota de crédito
+        </t>
+        <t t-if="object.invoice_origin">
+            (con referencia: <t t-out="object.invoice_origin or ''">SUB003</t>)
+        </t>
+        que asciende a <span style="font-weight:bold;" t-out="format_amount(object.amount_total, object.currency_id) or ''">$ 143,750.00</span>
+        efectuado por <t t-out="object.company_id.name or ''">YourCompany</t>.
+        <br /><br />
+        No dude en ponerse en contacto con nosotros si tiene alguna pregunta.
+        <t t-if="not is_html_empty(object.invoice_user_id.signature)">
+            <br /><br />
+            <t t-out="object.invoice_user_id.signature or ''">--<br/>Mitchell Admin</t>
+        </t>
+    </p>
+</div>
+            </field>
+            <field name="report_template_ids" eval="[(4, ref('account.account_invoices'))]"/>
+            <field name="lang">{{ object.partner_id.lang }}</field>
+            <field name="auto_delete" eval="True"/>
+        </record>
+    </data>
+</odoo>

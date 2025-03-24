@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="True">
+
+  <data noupdate="True">
+
+    <!-- Electronic Tax Document Sat Phrase Type -->
+    <record id="phrase_1" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">1</field>
+      <field name="name">Frases de Retención del ISR</field>
+      <field name="active" eval="True" />
+    </record>
+    <record id="phrase_2" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">2</field>
+      <field name="name">Frases de Agente de Retención del IVA</field>
+      <field name="active" eval="True" />
+    </record>
+    <record id="phrase_3" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">3</field>
+      <field name="name">Frases de no Genera Derecho a Crédito Fiscal del IVA</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">4</field>
+      <field name="name">Frases de Exento o no Efecto al IVA</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_5" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">5</field>
+      <field name="name">Frases de Facturas Especiales</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_6" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">6</field>
+      <field name="name">Frases de Contribuyente Agropecuario</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_7" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">7</field>
+      <field name="name">Frases de Regímenes Electrónicos</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_8" model="electronic_tax_document.sat_phrase_type">
+      <field name="code">8</field>
+      <field name="name">Frases de Exento de ISR</field>
+      <field name="active" eval="False" />
+    </record>
+
+    <!-- Electronic Tax Document Sat Phrase Sybtype -->
+    <!-- 1 - Frases de Retención del ISR -->
+    <record id="phrase_1_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_1" />
+      <field name="code">1</field>
+      <field name="name">Afiliado al ISR Régimen Sobre las Utilidades de Actividades Lucrativas</field>
+      <field name="legend_on_invoice">Sujeto a pagos trimestrales ISR</field>
+      <field name="active" eval="True" />
+    </record>
+    <record id="phrase_1_phrase_subtype_2" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_1" />
+      <field name="code">2</field>
+      <field name="name">Afiliado al ISR Régimen Opcional Simplificado Sobre Ingresos de Actividades Lucrativas</field>
+      <field name="legend_on_invoice">Sujeto a retención definitiva ISR</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_1_phrase_subtype_3" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_1" />
+      <field name="code">3</field>
+      <field name="name">Afiliado al ISR Régimen Sobre las Utilidades de Actividades Lucrativas</field>
+      <field name="legend_on_invoice">Sujeto a pago directo ISR [dd/mm/aaaa]</field>
+      <field name="active" eval="False" />
+    </record>
+
+    <!-- 2 - Frases de Agente de Retención del IVA -->
+    <record id="phrase_2_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_2" />
+      <field name="code">1</field>
+      <field name="name">Es Agente de Retención del IVA</field>
+      <field name="legend_on_invoice">Agente de Retención del IVA</field>
+      <field name="active" eval="True" />
+    </record>
+
+    <!-- 3 - Frases de no Genera Derecho a Crédito Fiscal del IVA -->
+    <record id="phrase_3_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_3" />
+      <field name="code">1</field>
+      <field name="name">No genera derecho a crédito fiscal</field>
+      <field name="legend_on_invoice">No genera derecho a crédito fiscal</field>
+      <field name="active" eval="False" />
+    </record>
+
+    <!-- 4 - Frases de Exento o no Efecto al IVA -->
+    <record id="phrase_4_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">1</field>
+      <field name="name">Exportaciones</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 2 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_2" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">2</field>
+      <field name="name">Servicios</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 4 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_3" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">3</field>
+      <field name="name">Ventas de cooperativas</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 5 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_4" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">4</field>
+      <field name="name">Donaciones</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 9 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_5" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">5</field>
+      <field name="name">Pagos por el derecho de ser miembro y las cuotas periódicas</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 10 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_6" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">6</field>
+      <field name="name">Servicios exentos</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 13 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_7" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">7</field>
+      <field name="name">Venta de activos de Bancos o Sociedades Financieras</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 14 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_8" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">8</field>
+      <field name="name">Servicios exentos centros educativos privados</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 8 núm. 1 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_9" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">9</field>
+      <field name="name">Medicamentos</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 15 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_10" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">10</field>
+      <field name="name">Vehículos</field>
+      <field name="legend_on_invoice">Esta factura no incluye IVA (art. 55 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_11" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">11</field>
+      <field name="name">Ventas maquilas</field>
+      <field name="legend_on_invoice">No afecta al IVA (Decreto 29-89 Ley de Maquila)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_12" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">12</field>
+      <field name="name">Ventas zonas francas</field>
+      <field name="legend_on_invoice">No afecta al IVA (Decreto 65-89 Ley de Zonas Francas)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_13" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">13</field>
+      <field name="name">Venta de vivienda</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 12, Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_14" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">14</field>
+      <field name="name">Venta de títulos y acciones</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 6 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_15" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">15</field>
+      <field name="name">Venta al menudeo en mercados</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 7 núm. 11 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_16" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">16</field>
+      <field name="name">Ventas y servicios universidades</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 8 núm. 2 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_17" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">17</field>
+      <field name="name">Ventas Zolic</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 32 literal c Ley Orgánica Zolic)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_18" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">18</field>
+      <field name="name">Ventas a exentos con resolución específica</field>
+      <field name="legend_on_invoice">(Contribuyentes con resoluciones específicas de exención al IVA) </field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_19" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">19</field>
+      <field name="name">Faltante de inventario de bienes perecederos, casos fortuitos, de fuerza mayor o delitos</field>
+      <field name="legend_on_invoice">Exenta del IVA (art. 3 núm. 7 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_4_phrase_subtype_20" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_4" />
+      <field name="code">20</field>
+      <field name="name">Aportes sociedades de emprendimiento</field>
+      <field name="legend_on_invoice">Aportes (art. 35 Ley de Fortalecimiento al Emprendimiento)</field>
+      <field name="active" eval="False" />
+    </record>
+
+    <!-- 5 - Frases de Facturas Especiales -->
+    <record id="phrase_5_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_5" />
+      <field name="code">1</field>
+      <field name="name">Tipo Factura Especial</field>
+      <field name="legend_on_invoice">El vendedor o prestador del servicio se negó a emitir la factura correspondiente. (art. 52 Ley del IVA)</field>
+      <field name="active" eval="False" />
+    </record>
+
+    <!-- 6 - Frases de Contribuyente Agropecuario -->
+    <record id="phrase_6_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_6" />
+      <field name="code">1</field>
+      <field name="name">Régimen Especial de Contribuyente Agropecuario sobre las ventas brutas</field>
+      <field name="legend_on_invoice">Con forma de pago sobre las ventas brutas</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_6_phrase_subtype_2" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_6" />
+      <field name="code">2</field>
+      <field name="name">Régimen Especial de Contribuyente Agropecuario sobre las utilidades</field>
+      <field name="legend_on_invoice">Con forma de pago sobre las utilidades, no retener</field>
+      <field name="active" eval="False" />
+    </record>
+    
+    <!-- 7 - Frases de Regímenes Electrónicos -->
+    <record id="phrase_7_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_7" />
+      <field name="code">1</field>
+      <field name="name">Régimen electrónico de pequeño contribuyente</field>
+      <field name="legend_on_invoice">No retener, [XXXX]</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_7_phrase_subtype_2" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_7" />
+      <field name="code">2</field>
+      <field name="name">Régimen electrónico especial de contribuyente agropecuario</field>
+      <field name="legend_on_invoice">No retener, [XXXX]</field>
+      <field name="active" eval="False" />
+    </record>
+
+    <!-- 8 - Frases de Exento de ISR -->
+    <record id="phrase_8_phrase_subtype_1" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_8" />
+      <field name="code">1</field>
+      <field name="name">Exenciones generales universidades</field>
+      <field name="legend_on_invoice">Exenta del ISR (art. 8 núm. 2 Ley de Actualización Tributaria)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_8_phrase_subtype_2" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_8" />
+      <field name="code">2</field>
+      <field name="name">Exenciones generales centros educativos privados</field>
+      <field name="legend_on_invoice">Exenta del ISR (art. 8 núm. 3 Ley de Actualización Tributaria)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_8_phrase_subtype_3" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_8" />
+      <field name="code">3</field>
+      <field name="name">Exenciones generales iglesias</field>
+      <field name="legend_on_invoice">Exenta del ISR (art. 8 núm. 5 Ley de Actualización Tributaria)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_8_phrase_subtype_4" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_8" />
+      <field name="code">4</field>
+      <field name="name">Exenciones Rentas de Actividades Lucrativas entes no lucrativos</field>
+      <field name="legend_on_invoice">Exenta del ISR (art. 11 núm. 1 Ley de Actualización Tributaria)</field>
+      <field name="active" eval="False" />
+    </record>
+    <record id="phrase_8_phrase_subtype_5" model="electronic_tax_document.sat_phrase_subtype">
+      <field name="electronic_tax_document_sat_phrase_type_id" ref="phrase_8" />
+      <field name="code">5</field>
+      <field name="name">Exenciones Rentas deActividades Lucrativas cooperativas</field>
+      <field name="legend_on_invoice">Exenta del ISR (art. 11 núm. 2 Ley de Actualización Tributaria)</field>
+      <field name="active" eval="False" />
+    </record>
+
+  </data>
+
+</odoo>

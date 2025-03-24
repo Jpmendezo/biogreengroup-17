@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="True">
+
+  <data>
+
+    <record id="factura" model="electronic_tax_document.invoice_type">
+      <field name="code">FACT</field>
+      <field name="name">Factura</field>
+      <field name="is_reversal" eval="False" />
+      <field name="active" eval="True" />
+    </record>
+
+    <record id="factura_cambiaria" model="electronic_tax_document.invoice_type">
+      <field name="code">FCAM</field>
+      <field name="name">Factura Cambiaria</field>
+      <field name="is_reversal" eval="False" />
+      <field name="active" eval="True" />
+    </record>
+
+    <record id="factura_cambiaria_pequeno_contribuyente" model="electronic_tax_document.invoice_type">
+      <field name="code">FCAP</field>
+      <field name="name">Factura Cambiaria Pequeño Contribuyente</field>
+      <field name="is_reversal" eval="False" />
+      <field name="active" eval="False" />
+    </record>
+
+    <record id="factura_pequeno_contribuyente" model="electronic_tax_document.invoice_type">
+      <field name="code">FPEQ</field>
+      <field name="name">Factura Pequeño Contribuyente</field>
+      <field name="is_reversal" eval="False" />
+      <field name="active" eval="False" />
+    </record>
+
+    <record id="factura_especial" model="electronic_tax_document.invoice_type">
+      <field name="code">FESP</field>
+      <field name="name">Factura Especial</field>
+      <field name="is_reversal" eval="False" />
+      <field name="active" eval="False" />
+    </record>
+
+    <record id="recibo" model="electronic_tax_document.invoice_type">
+      <field name="code">RECI</field>
+      <field name="name">Recibo</field>
+      <field name="is_reversal" eval="False" />
+      <field name="active" eval="False" />
+    </record>
+
+    <record id="recibo_donacion" model="electronic_tax_document.invoice_type">
+      <field name="code">RDON</field>
+      <field name="name">Recibo por Donación</field>
+      <field name="is_reversal" eval="False" />
+      <field name="active" eval="False" />
+    </record>
+
+    <record id="nota_debito" model="electronic_tax_document.invoice_type">
+      <field name="code">NDEB</field>
+      <field name="name">Nota de Débito</field>
+      <field name="is_reversal" eval="True" />
+      <field name="active" eval="False" />
+    </record>
+
+    <record id="nota_credito" model="electronic_tax_document.invoice_type">
+      <field name="code">NCRE</field>
+      <field name="name">Nota de Crédito</field>
+      <field name="is_reversal" eval="True" />
+      <field name="active" eval="True" />
+    </record>
+
+    <record id="nota_abono" model="electronic_tax_document.invoice_type">
+      <field name="code">RDON</field>
+      <field name="name">Nota de Abono</field>
+      <field name="is_reversal" eval="True" />
+      <field name="active" eval="False" />
+    </record>
+
+  </data>
+
+</odoo>
